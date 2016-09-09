@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Assignment 01</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script>
+			var DELAY = 700, clicks = 0, timer = null;
+
+			$(document).ready(function() {
+				$("p").on("click", function(e) {
+					clicks++;
+					if(clicks === 1) {
+						timer = setTimeout(function() {
+							$("body").append("<p>Single Click</p>");
+							clicks = 0;
+						}, DELAY);
+					} else {
+						clearTimeout(timer);
+						$("body").append("<p>Double Click</p>");
+						clicks = 0;
+					}
+				})
+				.on("dblclick", function(e) {
+					e.preventDefault();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<p id="click"> Click Me </p> 
+	</body>
+</html>
